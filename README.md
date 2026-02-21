@@ -6,6 +6,8 @@ Ce projet a pour but de simuler une attaque **Pass-the-Hash** dans un environnem
 ---
 
 ## 🏗️ Architecture du Lab
+<img width="861" height="769" alt="Screenshot_20260221_185159" src="https://github.com/user-attachments/assets/704bb87f-5843-44db-8e77-4c847e7ace75" />
+
 
 ### 🔧 Composants
 
