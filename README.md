@@ -32,5 +32,27 @@ NTLM (New Technology LAN Manager) est une suite de protocoles d’authentificati
 - CrackMapExec SMB permet l’authentification distante via NTLM sans mot de passe en clair.  
 - LogonType détecté : 3 (Network Logon)  
 - Processus : NtLmSsp
-## 🔎 Phase 2 – Détection par le SOC (Wazuh)
+## 🔎 Phase 2 – Détection par le SOC (Wazuh)  
+-Dashboard Windows cible 
+-<img width="1920" height="1080" alt="Screenshot_20260221_194943" src="https://github.com/user-attachments/assets/292579b9-dd7b-4d43-9d1b-55c26b0fa71c" /> 
+- **Event ID : 4624** – Successful Remote Logon
+- <img width="1147" height="901" alt="Pass the Hash" src="https://github.com/user-attachments/assets/43f8a901-af91-4623-b035-629983ff0789" />
+- <img width="1147" height="901" alt="Pass the Hash" src="https://github.com/user-attachments/assets/5d90daa2-b399-48a0-bb64-a072b8f792ca" />
+
+**Éléments critiques détectés :**
+- AuthenticationPackageName : NTLM  
+- LogonType : 3  
+- KeyLength : 0  
+- Adresse IP source : 192.168.2.10 (Kali)  
+- Compte : Adrianot
+- time : 
+
+**Règle Wazuh déclenchée :**
+- `Successful Remote Logon Detected - NTLM authentication, possible pass-the-hash attack`
+
+
+
+
+
+
 
