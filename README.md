@@ -49,7 +49,38 @@ NTLM (New Technology LAN Manager) est une suite de protocoles d’authentificati
 
 **Règle Wazuh déclenchée :**
 - `Successful Remote Logon Detected - NTLM authentication, possible pass-the-hash attack`
+- ## 🔥 MITRE ATT&CK Mapping
+- **T1550.002** – Pass the Hash  
+- **T1078.002** – Domain Accounts  
+- **Tactiques :** Lateral Movement, Defense Evasion, Privilege Escalation 
+<img width="1597" height="270" alt="image" src="https://github.com/user-attachments/assets/80df6290-ebd0-4d82-ba8b-a7bc19130bd6" />
+## 🧠 Analyse SOC L1
 
+- NTLM utilisé au lieu de Kerberos → suspicion  
+- Logon Type 3 (connexion distante)  
+- KeyLength = 0 → indicateur classique Pass-the-Hash  
+- IP interne inhabituelle  
+- Compte domaine utilisé à distance  
+
+---
+
+## 🛡️ Recommandations de sécurité
+
+- Désactiver NTLM et forcer Kerberos  
+- Activer SMB Signing  
+- Restreindre l’usage des comptes administrateurs  
+- Surveiller Event ID 4624 et 4625  
+- Implémenter LAPS (Local Administrator Password Solution)  
+
+---
+
+## 📊 Conclusion
+
+Ce projet démontre :  
+- Faisabilité d’un mouvement latéral via PtH  
+- Importance de la journalisation Windows  
+- Capacité de Wazuh à détecter des activités suspectes  
+- Utilité du MITRE ATT&CK pour classifier les attaques  
 
 
 
