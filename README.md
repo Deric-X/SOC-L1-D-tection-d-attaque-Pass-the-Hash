@@ -1,13 +1,19 @@
-# SOC-L1-D-tection-d-attaque-Pass-the-Hash
+# Analyser et detection d'attaque Pass-the-Hash SOC-1
 
 ## 🎯 Objectif
-Ce projet a pour but de simuler une attaque **Pass-the-Hash** dans un environnement Active Directory et de démontrer la détection et l’alerte via un SOC niveau 1 avec **Wazuh**.
+Ce projet a pour but de simuler une attaque **Pass-the-Hash** dans un environnement Active Directory et de démontrer la détection et l’alerte et aussi d'analyse via un SOC niveau 1 avec **Wazuh**.
+  
+## 🎯 Definition 
 
----
+Une attaque pass-the-hash (PtH) se produit lorsqu’un attaquant capture les identifiants de connexion d’un compte, spécifiquement les valeurs de hachage plutôt que les mots de passe en texte clair, à partir d’un appareil, et utilise ces valeurs de hachage capturées pour s’authentifier sur d’autres appareils ou services au sein d’un réseau.
 
+Cette technique contourne les étapes d’authentification standard qui nécessitent normalement le mot de passe original d’un utilisateur, permettant aux attaquants de pénétrer de manière transparente comme s’ils étaient des utilisateurs légitimes.
+
+Pour comprendre la nature de ces cyberattaques, définissons un hachage de mot de passe. Un hachage de mot de passe consiste à transformer votre mot de passe standard en une chaîne de caractères indéchiffrable. Pensez à transformer “motdepasse123” en quelque chose comme “5f4dcc3b5aa765d61d832”.
+
+---  
 ## 🏗️ Architecture du Lab
 <img width="861" height="769" alt="Screenshot_20260221_185159" src="https://github.com/user-attachments/assets/704bb87f-5843-44db-8e77-4c847e7ace75" />
-
 
 ### 🔧 Composants
 
@@ -15,15 +21,21 @@ Ce projet a pour but de simuler une attaque **Pass-the-Hash** dans un environnem
 - **SIEM / HIDS** : Wazuh  
 - **Attaquant** : Kali Linux  
 - **Server** : Windows Server (AD Domain Controller)  
-- **Cible** : poste utilisateur simulé  
+- **Cible** : poste utilisateur simulé
+- <img width="679" height="450" alt="image" src="https://github.com/user-attachments/assets/5a801e6b-5022-4e8d-a07c-35ea36ceaac6" />
 
 ### 🔴 Phase 1 – Simulation de l’attaque
 1️⃣ **Capture des hashes NTLM**  
-- **L'attaque lance responder
-NTLM (New Technology LAN Manager) est une suite de protocoles d’authentification développés par Microsoft permettant de confirmer l’identité des utilisateurs et de protéger l’intégrité et la confidentialité de leurs activités sur un réseau.
+
+L’attaquant utilise l’outil Responder afin d’écouter activement le trafic réseau sur l’interface ciblée. Responder empoisonne les protocoles de résolution de noms locaux (LLMNR, NetBIOS et mDNS) en répondant frauduleusement aux requêtes de la victime.
+
+Lorsque la machine cible tente de résoudre un nom inexistant, elle envoie une requête LLMNR. L’attaquant répond en se faisant passer pour le serveur recherché, ce qui provoque l’envoi d’un hash NTLM d’authentification.
+
+Le hash capturé est ensuite utilisé dans une attaque de type Pass-the-Hash, permettant à l’attaquant de s’authentifier sur d’autres systèmes sans connaître le mot de passe réel.
 - <img width="940" height="803" alt="responder" src="https://github.com/user-attachments/assets/4e0420d0-de68-42dc-8ccf-c8e135a78d96" />
 - Responder intercepte le hash du compte `Adrianot`.
 - <img width="1097" height="132" alt="Screenshot_20260221_231804" src="https://github.com/user-attachments/assets/6de571bf-9f04-48df-8143-9429651e1a37" />
+
 - 2️⃣ **Crackage du mot de passe**  
 - Hashcat permet d’obtenir le mot de passe en clair.
 - <img width="1094" height="176" alt="image" src="https://github.com/user-attachments/assets/f7f2e14e-242c-482c-8ccf-880c87fc6b54" />
