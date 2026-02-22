@@ -285,5 +285,3 @@ Il met en évidence l’importance :
 
 ---
 
-
-On passe au niveau supérieur ? 💪
