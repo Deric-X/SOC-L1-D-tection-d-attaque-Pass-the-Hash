@@ -37,7 +37,7 @@ NTLM (New Technology LAN Manager) est une suite de protocoles d’authentificati
 -<img width="1920" height="1080" alt="Screenshot_20260221_194943" src="https://github.com/user-attachments/assets/292579b9-dd7b-4d43-9d1b-55c26b0fa71c" /> 
 - **Event ID : 4624** – Successful Remote Logon
 - <img width="1147" height="901" alt="Pass the Hash" src="https://github.com/user-attachments/assets/43f8a901-af91-4623-b035-629983ff0789" />
-- <img width="1147" height="901" alt="Pass the Hash" src="https://github.com/user-attachments/assets/5d90daa2-b399-48a0-bb64-a072b8f792ca" />
+- <img width="1139" height="827" alt="Pass the Hash 2" src="https://github.com/user-attachments/assets/6dee8160-0c17-419a-8e0b-493feac62e58" />
 
 **Éléments critiques détectés :**
 - AuthenticationPackageName : NTLM  
@@ -45,7 +45,7 @@ NTLM (New Technology LAN Manager) est une suite de protocoles d’authentificati
 - KeyLength : 0  
 - Adresse IP source : 192.168.2.10 (Kali)  
 - Compte : Adrianot
-- time : 
+- time : Feb 21, 2026 @ 21:57:16.957
 
 **Règle Wazuh déclenchée :**
 - `Successful Remote Logon Detected - NTLM authentication, possible pass-the-hash attack`
@@ -53,7 +53,8 @@ NTLM (New Technology LAN Manager) est une suite de protocoles d’authentificati
 - **T1550.002** – Pass the Hash  
 - **T1078.002** – Domain Accounts  
 - **Tactiques :** Lateral Movement, Defense Evasion, Privilege Escalation 
-<img width="1597" height="270" alt="image" src="https://github.com/user-attachments/assets/80df6290-ebd0-4d82-ba8b-a7bc19130bd6" />
+<img width="1914" height="612" alt="image" src="https://github.com/user-attachments/assets/17f20300-1ac7-478a-bc0c-2c6d370d47a1" />
+
 ## 🧠 Analyse SOC L1
 
 - NTLM utilisé au lieu de Kerberos → suspicion  
@@ -61,7 +62,6 @@ NTLM (New Technology LAN Manager) est une suite de protocoles d’authentificati
 - KeyLength = 0 → indicateur classique Pass-the-Hash  
 - IP interne inhabituelle  
 - Compte domaine utilisé à distance  
-
 ---
 
 ## 🛡️ Recommandations de sécurité
